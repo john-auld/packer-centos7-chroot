@@ -3,15 +3,16 @@
   "variables": {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "region": "us-east-1",
+    "region": "eu-west-2",
     "project_name": "c7build",
     "build_stage": "base",
     "os_name": "centos",
     "os_version": "7",
-    "root_device_size": "8",
+    "encrypt_boot_device": true,
+    "root_device_size": "13",
     "fs_type": "xfs",
     "repo_baseurl": "mirror.centos.org",
-    "rpm_release_file": "centos-release-7-3.1611.el7.centos.x86_64.rpm"
+    "rpm_release_file": "centos-release-7-5.1804.el7.centos.x86_64.rpm"
   },
 
   "provisioners": [
@@ -75,6 +76,7 @@
       ],
       "root_volume_size": "{{user `root_device_size`}}",
       "root_device_name": "/dev/xvda",
+      "encrypt_boot": "{{user `encrypt_boot_device`}}",
       "ami_block_device_mappings": [
         {
           "device_name": "/dev/xvda",
